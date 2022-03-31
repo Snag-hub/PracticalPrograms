@@ -13,6 +13,7 @@ class JoinThread1 implements Runnable {
       }
 
     } catch (Exception e) {
+      System.out.println(e);
     }
   }
 

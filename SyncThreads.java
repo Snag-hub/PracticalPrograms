@@ -26,14 +26,17 @@ public class SyncThreads extends Thread {
 
   public static void main(String[] args) {
     m = new Movies();
-    Scanner seat = new Scanner(System.in);
-    System.out.println("Enter the number of seats you want to book");
-    int seats = seat.nextInt();
-    SyncThreads s = new SyncThreads();
-    SyncThreads s2 = new SyncThreads();
-    s.Seat = seats;
-    s.start();
-    s2.Seat = seats;
-    s2.start();
+    try (Scanner seat = new Scanner(System.in)) {
+      System.out.println("Enter the number of seats you want to book");
+      int seats = seat.nextInt();
+      SyncThreads s = new SyncThreads();
+      SyncThreads s2 = new SyncThreads();
+      s.Seat = seats;
+      s.start();
+      s2.Seat = 7;
+      s2.start();
+    } catch (Exception e) {
+      System.out.println(e);
+    }
   }
 }
